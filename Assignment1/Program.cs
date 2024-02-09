@@ -32,18 +32,21 @@ namespace Assignment1
                             Console.WriteLine("{0} {1} {2} {3} {4} {5} {6}", arr[0], arr[1], arr[2], arr[3], arr[4], arr[5], arr[6]);
                             i++;
                         }
+                        sr.Close();
                         
                     }
                     else
                     {
                         Console.WriteLine("the file does not exist");
                     }
+                    
                 }
                 else if (choice == "2")
                 {
                     StreamWriter sw = new StreamWriter(file);
-                    for (int i = 0; i < 7; i++)
+                    do
                     {
+
                         Console.WriteLine("Enter a new ticket (y/n)");
                         string input = Console.ReadLine().ToLower();
                         if (input != "y") { break; }
@@ -68,11 +71,13 @@ namespace Assignment1
                             watching[j] = Console.ReadLine();
                         }
                         string watchers;
-                        for (int j = 0; )
+                        watchers = string.Join("|", watching);
+
+                        sw.WriteLine($"{tickNum},{summary},{status},{priority},{submit},{assign},{watchers}");
+                        sw.Close();
                         
                         
-                        
-                    }
+                    } while (true);
                 }
 
 
